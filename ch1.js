@@ -137,6 +137,8 @@ const squareNum = (x) => x * x;
 console.log(plusOne(q));
 console.log(square(plusOne(q)));
 
-
 //using function with object,we call it methods
 //all js objects (including array) have methods
+
+let a = [];
+a.push(1, 2, 3, 4);
