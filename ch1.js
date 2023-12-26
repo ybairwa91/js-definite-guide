@@ -142,3 +142,101 @@ console.log(square(plusOne(q)));
 
 let a = [];
 a.push(1, 2, 3, 4);
+console.log(a.reverse());
+
+// let points = [
+//   { x: 0, y: 0 },
+//   { x: 1, y: 1 },
+// ];
+points.dist = function () {
+  let p1 = this[0];
+  let p2 = this[1];
+  let a = p2.x - p1.x;
+  let b = p2.y - p1.y;
+  return Math.sqrt(a * a + b * b);
+};
+console.log(points.dist());
+
+//js control structure
+
+function abs(x) {
+  if (x >= 0) {
+    return x;
+  } else {
+    return -x;
+  }
+}
+
+abs(-10) === abs(10); //gives true value
+
+function sum(array) {
+  let sum = 0;
+  for (let x of array) {
+    sum += x;
+  }
+  return sum;
+}
+console.log(sum([1, 2, 3, 4, 5]));
+
+function factorial(n) {
+  let product = 1;
+  while (n > 1) {
+    product *= n;
+    n--;
+  }
+  return product;
+}
+console.log(factorial(5));
+
+function factorial2(n) {
+  let i,
+    product = 1;
+  for (i = 2; i < n; i++) product *= i;
+  return product;
+}
+console.log(factorial2(7));
+
+//
+class Point {
+  //by convention using classname as capital
+  constructor(x, y) {
+    //constructor function to initialize new name
+
+    //this points to new object being initialized
+    this.x = x;
+    this.y = y;
+    //store construction function argument as properties
+  }
+
+  distance() {
+    return Math.sqrt(this.x * this.x + this.y + this.y);
+  }
+}
+
+//using new keyword to make a point constructor
+let pk = new Point(1, 1);
+console.log(pk);
+
+//histogram with js
+
+class DefaultMap extends Map {
+  constructor(DefaultValue) {
+    super();
+    this.DefaultValue = DefaultValue;
+  }
+  get(key) {
+    if (this.has(key)) {
+      return super.get(key);
+    } else {
+      return this.DefaultValue;
+    }
+  }
+}
+
+
+//this class computer and display letter frequency  histograms
+class Histogram {
+  constructor(){
+    this.letterCounts
+  }
+}
