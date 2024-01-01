@@ -123,13 +123,202 @@ lets see how js behave when we have get underflow(value nearest to 0),overflow(v
 ..0/0 gives NaN(not a number value)   
 */
 
-
 //NaN
 console.log(0 / 0);
 console.log(Infinity / Infinity);
-
 console.log("hi" / "vy");
 console.log(Math.sqrt(4));
 console.log(Math.sqrt(0.1));
 console.log(Math.sqrt(-10));
 
+//Infinity conditions
+//OVERFLOW
+console.log(Number.MAX_VALUE * 2);
+console.log(Number.POSITIVE_INFINITY);
+console.log(1 / 0);
+
+//-Infinity
+console.log(Number.NEGATIVE_INFINITY);
+console.log(-1 / 0);
+console.log(-Number.MAX_VALUE * 2);
+
+//NaN
+console.log(Number.NaN);
+console.log(0 / 0);
+console.log(Infinity / Infinity);
+
+//some  rare cases
+console.log(Number.MIN_VALUE / 2);
+console.log(-Number.MIN_VALUE / 2);
+-1 / Infinity;
+
+//New properties in ES6
+//1
+console.log(Number.parseInt("10"));
+console.log(Number.parseInt(10));
+
+//2
+console.log(Number.parseFloat("10.001"));
+console.log(Number.parseFloat("10"));
+console.log(Number.parseFloat("10.1037491"));
+
+//3 isNaN==>tell whether it is not a number or not
+console.log(Number.isNaN(10));
+console.log(Number.isNaN(1));
+console.log(Number.isNaN(Infinity / Infinity));
+
+//4.
+console.log(Number.isFinite(x));
+console.log(Number.isFinite());
+
+//5.
+console.log(Number.isInteger(100));
+console.log(Number.isInteger("100"));
+
+//6.
+console.log(Number.isSafeInteger(2 ** 52));
+console.log(Number.isSafeInteger(2 ** 53));
+console.log(Number.isSafeInteger(-(2 ** 52)));
+console.log(Number.isSafeInteger(-(2 ** 53)));
+
+//7.
+console.log(Number.MIN_SAFE_INTEGER);
+console.log(Number.MAX_SAFE_INTEGER);
+//8.
+console.log(Number.EPSILON);
+
+//NaN
+console.log(93473 == NaN);
+console.log("STRING" == NaN);
+console.log(
+  "anything here doesnot equal to Not a number including NaN Itself" == NaN
+);
+console.log(NaN === NaN);
+
+//isNaN() function globally available===>only true when it is NaN,or when a  value(literal) cannot convert to numeric value
+console.log(Number.isNaN(Infinity / Infinity));
+console.log(Number.isNaN(0 / 0));
+console.log(Number.isNaN(null));
+console.log(Number.isNaN(x / 0));
+
+//isFinitite()
+console.log(Number.isFinite(10));
+console.log(Number.isFinite(Infinity));
+console.log(Number.isFinite(-Infinity));
+console.log(Number.isFinite(NaN));
+console.log(Number.isFinite(0 / 0));
+console.log(Number.isFinite(Infinity / Infinity));
+
+//a unusual behaviour in js that 0===-0 gives true value
+console.log(0 === -0);
+
+let zero = 0;
+let negz = -0;
+console.log(zero == negz);
+
+//but Infinity is not strictly equal to -Infinity
+console.log(1 / zero === 1 / negz);
+
+/*++++++++++++++++++++++++++++++FLOATING POINT AND JS++++++++++++++++++++++++++++
+//Binary Floating point and rounding errors
+//negative or positive whole number with decimal is what floating point
+0.24 is floating point
+24 is not(its whole number basically)
+
+
+//js supports IEEE-754 floating point representation  
+//issue in js
+js can represent 1/2,1/8,1/2024 easily but cant 
+
+
+
+*/
+
+console.log(1 / 2);
+console.log(1 / 8);
+console.log(1 / 2024);
+console.log(1 / 10);
+console.log(1 / 100);
+console.log(1 / 1000);
+console.log(1 / 10000);
+
+//js sometimes have issue with binary floating representation lets see how
+
+let f = 0.3 - 0.2;
+let g = 0.2 - 0.1;
+console.log(f);
+console.log(g);
+console.log(f === g);
+console.log(f === 0.1);
+console.log(g === 0.1);
+
+//++++++++++++++++++++++++++++BigInt+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//arbitraty precision integers and bigInt
+//new numeric type in ES2020 is BigInt===to represent 64bit integer
+//syntax of BigInt
+1234n;
+0b1111111n;
+0o7777n;
+0x8000000000000000000000000000n;
+
+//BigInt() function to convert regular js number or string to BigInt values
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(BigInt(Number.MAX_SAFE_INTEGER));
+
+let string = "1" + "0".repeat(100);
+console.log(BigInt(string));
+console.log(string);
+
+console.log(1000n + 2000n);
+console.log(3000n - 2000n);
+console.log(2000n * 3000n);
+
+console.log(3000n / 997n);
+console.log(3000n % 997n);
+console.log(2n ** 131071n - 1n);
+
+//Note--dont mix BigInt values with regular number
+// console.log(1n + 10);
+// console.log(BigInt(1n) + 10);
+
+//comparison operator works with different numeric types
+console.log(1 < 2n);
+console.log(2 < 1n);
+console.log(0 == 0n);
+console.log(0 === 0n);
+
+//Bitwise operator work with BigInt operands
+//Math object doesnot accept BigInt integers
+
+//javascript do have date class for representing and manipulating the numbers that represent date and times
+//js dates are objects
+
+let timestamp = Date.now();
+console.log(timestamp);
+let now = new Date();
+console.log(now);
+let ms = now.getTime(); //convert to milisecond timestamp
+console.log(ms);
+
+let iso = now.toISOString();
+console.log(iso); //convert string into standard format
+
+//Text
+//js type of representing text is string
+//string is immutable sequence of 16bit values
+//each text(character) represent a string
+//js use zero base indexing
+//empty string is 0 length string
+
+//characters codepoints and js strings
+//(to understand in better way)
+//in ES6 string are iterable,use can use all iterable loops like for of.for in
+
+//STRING LITERALS
+(""); //string with zero characters
+("testing");
+("3.14");
+("name=myOne");
+("hi,this is yogesh on 1st day of 2024");
+("she said 'hi' to me");
+`she said 'hi' to me ,using backtics or template literals`;
