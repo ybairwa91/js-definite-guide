@@ -20,7 +20,7 @@ CATEGORIES--PRIMITIVE AND OBJECTS TYPES
      ..array are object type
      ..set type
      ..map type
-     ..function and classes as they are not boolean,numbers or string they are simply object type
+     ..function and classes as they are not boolean,numbers or string =>they are simply object type
      ..supports oops
      ..mutable(you can change object type values)
 
@@ -33,7 +33,7 @@ CATEGORIES--PRIMITIVE AND OBJECTS TYPES
    ..js constant and variable are untypes means declaration doesnot define the type of value u storing/
 
    //NUMBERS
-   ..We can numbers in js as number literal
+   ..We can store numbers in js as number literal
    ..it supports 64bit integer easily
    ..can use - sign to make number literal negative
    
@@ -126,7 +126,7 @@ lets see how js behave when we have get underflow(value nearest to 0),overflow(v
 //NaN
 console.log(0 / 0);
 console.log(Infinity / Infinity);
-console.log("hi" / "vy");
+console.log('hi' / 'vy');
 console.log(Math.sqrt(4));
 console.log(Math.sqrt(0.1));
 console.log(Math.sqrt(-10));
@@ -154,13 +154,13 @@ console.log(-Number.MIN_VALUE / 2);
 
 //New properties in ES6
 //1
-console.log(Number.parseInt("10"));
+console.log(Number.parseInt('10'));
 console.log(Number.parseInt(10));
 
 //2
-console.log(Number.parseFloat("10.001"));
-console.log(Number.parseFloat("10"));
-console.log(Number.parseFloat("10.1037491"));
+console.log(Number.parseFloat('10.001'));
+console.log(Number.parseFloat('10'));
+console.log(Number.parseFloat('10.1037491'));
 
 //3 isNaN==>tell whether it is not a number or not
 console.log(Number.isNaN(10));
@@ -173,7 +173,7 @@ console.log(Number.isFinite());
 
 //5.
 console.log(Number.isInteger(100));
-console.log(Number.isInteger("100"));
+console.log(Number.isInteger('100'));
 
 //6.
 console.log(Number.isSafeInteger(2 ** 52));
@@ -189,9 +189,9 @@ console.log(Number.EPSILON);
 
 //NaN
 console.log(93473 == NaN);
-console.log("STRING" == NaN);
+console.log('STRING' == NaN);
 console.log(
-  "anything here doesnot equal to Not a number including NaN Itself" == NaN
+  'anything here doesnot equal to Not a number including NaN Itself' == NaN
 );
 console.log(NaN === NaN);
 
@@ -265,7 +265,7 @@ console.log(g === 0.1);
 console.log(Number.MAX_SAFE_INTEGER);
 console.log(BigInt(Number.MAX_SAFE_INTEGER));
 
-let string = "1" + "0".repeat(100);
+let string = '1' + '0'.repeat(100);
 console.log(BigInt(string));
 console.log(string);
 
@@ -315,10 +315,280 @@ console.log(iso); //convert string into standard format
 //in ES6 string are iterable,use can use all iterable loops like for of.for in
 
 //STRING LITERALS
-(""); //string with zero characters
-("testing");
-("3.14");
-("name=myOne");
-("hi,this is yogesh on 1st day of 2024");
+(''); //string with zero characters
+('testing');
+('3.14');
+('name=myOne');
+('hi,this is yogesh on 1st day of 2024');
 ("she said 'hi' to me");
 `she said 'hi' to me ,using backtics or template literals`;
+('hi \n hi in second line');
+
+//two lines written on one line
+('two \nlines');
+
+//one line string written on 3 lines
+('one\
+long\
+line');
+
+//two line string written on two lines
+`the newline character at the end of this line
+is included literally in this strings`;
+
+//using single quotes to delimit your strings be careful while using,be careful while writting words like can't and o'reilly's
+//be careful about apostrophes (') its almost same as single quotes strings
+//use backslash to avoid this issue how let me show u
+console.log("hello how'r you");
+
+//escape characters in string literals
+//importance of backslash character
+console.log("You're right,it can't be a quote");
+
+console.log('\xA9');
+console.log('\u03c0');
+console.log('\u{1f600}');
+
+//escape characters
+console.log('\u0000');
+console.log('\b');
+console.log('\t');
+console.log('\n');
+console.log('\v');
+console.log('\f');
+console.log('\r');
+// console.log('\'')
+console.log('\\');
+// console.log('\xnn');
+// console.log('\unnn')
+// console.log('\u{n}')
+
+//other than this if backslash is used then its ignored by js
+console.log('iehr');
+console.log('i*');
+
+//+++++++++++working with stings
+//1.concatenate string
+let msg = 'hello' + 'world';
+let greeting = 'welcome to my blog,' + ' ' + msg;
+
+//2.compare string using equalities and string inequalities operators
+let one = 'one';
+let two = 'two';
+console.log(one === two);
+console.log(one !== two);
+console.log(one > two);
+console.log(one < two);
+
+//to determine the length of the string
+let a = 'alcohol';
+console.log(a.length);
+
+let s = 'Hello world';
+
+//obtaing a portion of the string
+console.log(s.substring(1, 4));
+console.log(s.slice(1, 4));
+console.log(s.slice(-3));
+console.log(s.split(','));
+
+//searching for a string
+console.log(s.indexOf('l')); //tell the position of index start with 0
+console.log(s.indexOf('l')); //tell the position of index start with 0
+console.log(s.indexOf('zz')); //since string doesnot include zz it shows -1
+console.log(s.lastIndexOf('l'));
+
+//Boolean searching function in ES6 or later
+console.log(s.startsWith('Hell'));
+console.log(s.endsWith('!'));
+console.log(s.includes('or'));
+
+//creating modified version of a string
+console.log(s.replace('llo', 'ya'));
+console.log(s.toLowerCase());
+console.log(s.toUpperCase());
+console.log(s.normalize());
+console.log(s.normalize('NFD'));
+console.log(s.normalize('NFKC'));
+console.log(s.normalize('NFKD'));
+
+//inspecting individuals(16bit) character of a string
+console.log(s.charAt(0)); //first character
+console.log(s.charAt(s.length - 1)); //last character
+console.log(s.charCodeAt(0));
+console.log(s.codePointAt(0));
+
+//string padding function in ES2017
+console.log('x'.padStart(3)); //add spaces
+console.log('x'.padEnd(3));
+console.log(3, '*');
+console.log('x'.padEnd(3, 'x'));
+console.log('x'.padEnd(3, '-'));
+
+//space trimming function called trim() in ES2015
+console.log('   test   '.trim()); //remove white space
+console.log('   test   '.trimStart()); //remove white space from the left
+console.log('   test   '.trimEnd()); //remove space from the right
+
+//miscellaneous string methods
+console.log(s.concat('!')); //add text in the last
+console.log('<>'.repeat(5));
+
+//string are almost as array how lets see
+let p = 'Hello,world';
+console.log(p[0]);
+console.log(p[p.length - 1]);
+
+//Template literals
+s = `hello world`;
+let name = 'bill';
+let greets = `Hello ${name}`;
+console.log(greets);
+
+//Tagged template literal
+
+console.log(`\n`.length); //1 (string has a single newline character)
+console.log(String.raw`\n`.length); //2(a backlash character and n as well)
+
+//pattern matching
+//a new data type in js is regular expression(RegExp) for describing and matching pattern in strings of text.
+
+console.log(/^HTML/);
+console.log(/[1-9][0-9]*/);
+console.log(/\bjavascript\b/i);
+
+//method in RegExp
+let text = 'testing:1,2,3';
+let pattern = /\d+/g;
+console.log(pattern.test(text));
+console.log(text.search(pattern));
+console.log(text.match(pattern));
+console.log(text.replace(pattern, '#'));
+console.log(text.split(/\D+/));
+
+//Boolean values
+console.log(a === 4);
+
+if (a === 4) {
+  b = b + 1;
+} else {
+  a = a + 1;
+}
+
+//any js value can be converted into boolean value and some value are always gives false
+//we call them falsy values
+undefined;
+null;
+0;
+-0;
+NaN;
+(''); //empty string
+
+//except this everything works as a true boolean value
+//we call them truthy value
+
+//AND operator( && )
+//OR operator( || )
+//NOT operator(!)
+
+if ((x === 0 && y === 0) || !(z === 0)) {
+  //x and y are both zero or z is not zero
+}
+
+//null and undefined
+
+//1.null shows the absence of a value in type of string,value or an object
+console.log(typeof null);
+
+//2.undefined also another keyword to indicate the same as null but deeper kind of absence
+
+//when a function doesnot return anything it returns undefined
+//when a variable is not been initialized yet and u trying to return
+//undefined is a predefined global constant
+
+console.log(typeof undefined);
+
+//both have slightly different way but still both use interchangably and yes
+console.log(null === undefined);
+console.log(null == undefined);
+
+//both behave as a falsy value
+//as a programmer its ur choice what u want to choose
+//better is to go for null.
+
+//+++++++++++++++SYMBOLS+++++++++++++++++++++
+//introduced in ES6 to serve as a nonstring property names in object
+//no literal syntax of js so yes in ES6 its Symbol()function that helps to create a Symbol data type
+//u can simply use Symbol value as  property name
+
+let strname = 'string name';
+let symname = Symbol('propname');
+console.log(strname);
+console.log(symname);
+
+console.log(typeof strname);
+console.log(typeof symname);
+
+let o = {};
+o[strname] = 1;
+o[symname] = 2;
+console.log(o);
+console.log(o[strname]);
+console.log(o[symname]);
+
+//call Symbol() function to return symbol value
+//we can definitely use symbol to define property name in an object
+
+let k = Symbol('sym_x');
+console.log(k.toString());
+
+let c = Symbol.for('shared');
+let d = Symbol.for('shared');
+console.log(c === d);
+//some Symbol instance methods
+console.log(c.toString());
+console.log(Symbol.keyFor(d));
+
+//++++++++++++++++THE GLOBAL OBJECT++++++++++++++++++++
+//whenever a web browser loads a new page it create a new global object and gives it a initial set of properties that define js object which are globally available and use
+//global constant like undefined,infinity and NaN
+//global function like isNaN(),parseInt() and eval()
+//constructor function like Date(),RegExp(),String(),Object() and Array()
+//global object like Math and JSON
+
+//they are not reserved keyword but they are treated like one
+
+//in node its global object and in web browser it window object treated like global object
+// console.log(window);
+
+//ES2020 introduced globalThis in web browser to point global object
+console.log(globalThis);
+
+//Immutable primitive values and mutable objet references
+
+//since string behave like array and array are object but remember string are still immutable
+//and if u perform any method it will return a new string and original string will be intact
+let ss = 'hello';
+console.log(ss.toUpperCase());
+console.log(ss);
+
+//objects
+let o = { x: 1 };
+o.x = 2; //mutate existing value
+o.y = 3; //add new property
+
+let arr = [1, 2, 3];
+arr[0] = 0;
+arr[3] = 4;
+
+//objects cannot be compared by values
+let oo = { y: 2 };
+console.log(o == oo); //false
+
+let em = {},
+  emp = {};
+console.log(em === emp);
+
+//objects data type are also called reference types
+//and we call objects as referance
+//two objects are same iff they refer the same underlying object
