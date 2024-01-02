@@ -1,5 +1,7 @@
 //+++++++++++++++++++TYPES,VALUES AND VARIABLES+++++++++++++++++//
 
+//Note==data values are literals
+
 //
 
 //TYPES
@@ -682,5 +684,28 @@ console.log(digit.toPrecision(4));
 console.log(digit.toPrecision(7));
 console.log(digit.toPrecision(10));
 
+//Note-Number() function takes only floating point or integer and no other literals
+console.log(Number('100'));
+console.log(Number('100.325'));
+// console.log(Number(shdhfsd));
 
+//parseInt() only parse integers while parseFloat() parses both integers and floating point numbers
+console.log(parseInt('3 blind mice'));
+console.log(parseFloat('3.14 meters'));
+console.log(parseFloat('-12.34'));
+//if string start with 0x it will be calculate with hexadecimal number
+console.log(parseFloat('0xFF'));
+console.log(parseFloat('0xff'));
+console.log(parseInt('-0xFF'));
+console.log(parseFloat('.1'));
+console.log(parseInt('0.1'));
+console.log(parseInt('.1')); //cant start an integer with .1
+console.log(parseFloat('$72.45')); //number cant start with $1
 
+//parseInt() take second argument to specify the radix(base) of the number [values can be take as radix is between 2 to 36]
+
+console.log(parseInt('11', 2));
+console.log(parseInt('ff', 16));
+console.log(parseInt('zz', 36));
+console.log(parseInt('077', 8));
+console.log(parseInt('077', 16));
