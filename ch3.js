@@ -573,17 +573,17 @@ console.log(ss.toUpperCase());
 console.log(ss);
 
 //objects
-let o = { x: 1 };
-o.x = 2; //mutate existing value
-o.y = 3; //add new property
+let oo = { x: 1 };
+oo.x = 2; //mutate existing value
+oo.y = 3; //add new property
 
 let arr = [1, 2, 3];
 arr[0] = 0;
 arr[3] = 4;
 
 //objects cannot be compared by values
-let oo = { y: 2 };
-console.log(o == oo); //false
+let ooo = { y: 2 };
+console.log(oo == ooo); //false
 
 let em = {},
   emp = {};
@@ -592,3 +592,95 @@ console.log(em === emp);
 //objects data type are also called reference types
 //and we call objects as referance
 //two objects are same iff they refer the same underlying object
+
+let q = [];
+w = q;
+q[0] = 1;
+w[0];
+console.log(q === w);
+
+//here w doesnot show that it created a new object from q,it simply just referance to it
+
+//to create a new array from the array
+let anArr = ['a', 'b', 'c'];
+let emptyArr = [];
+for (let i = 0; i < anArr.length; i++) {
+  emptyArr[i] = anArr[i];
+}
+console.log(emptyArr);
+
+//ES6 introduced new method to copy an array from given array by using Array.from method
+let newArr = Array.from(emptyArr);
+console.log(newArr);
+
+//how to compare a function or an array
+function equalArrays(a, b) {
+  if (a == b) return true;
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+console.log(equalArrays([10, 15, 20, 25], [10, 15, 20, 25]));
+console.log(equalArrays([10, 15, 20, 25], [10, 15, 20, 20]));
+
+//TYPE CONVERSION
+
+console.log(10 + ' objects'); //10 coverted into string
+console.log('7' + 4); //4 become string
+console.log(4 + '7'); //47
+console.log(4 + 9 + '7'); //137
+let n = 1 - 'x'; //gives NaN since x cannot be converted into a number value
+console.log(n + 'objects');
+
+//Conversion and Equality
+
+//equality and strict equality
+console.log(null == undefined);
+console.log(null === undefined);
+console.log('0' == 0);
+console.log('0' === 0);
+
+console.log(0 == false);
+console.log('0' == false);
+
+//Explicit Conversion by user
+console.log(Number('3'));
+console.log(String(false));
+console.log(Boolean([])); //true
+
+console.log(String(10));
+console.log(toString(10));
+
+//conversion that is handy
+console.log(x + ''); //String(x)
+console.log(+x); //Number(x)
+console.log(x - 0); //Number(x)
+console.log(!!x); //Boolean(x) note that double !!
+
+let v = 17;
+let binary = '0b' + v.toString(2);
+console.log(binary);
+let octal = '0o' + v.toString(8);
+console.log(octal);
+let hex = '0o' + v.toString(16);
+console.log(hex);
+
+//toFixed()==>converts a number to a string with a specified number of digit
+//toExponential()==>converts a number to a string using exponential notation
+//toPrecision()==>show number to a string with the number of significant digit u specify
+
+let digit = 123456.719;
+console.log(digit.toFixed(0));
+console.log(digit.toFixed(2));
+console.log(digit.toFixed(5));
+console.log(digit.toExponential(1));
+console.log(digit.toExponential(3));
+console.log(digit.toPrecision(4));
+console.log(digit.toPrecision(7));
+console.log(digit.toPrecision(10));
+
+
+
