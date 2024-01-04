@@ -1,3 +1,5 @@
+'use strict';
+
 //+++++++++++++++++++TYPES,VALUES AND VARIABLES+++++++++++++++++//
 
 //Note==data values are literals
@@ -596,7 +598,7 @@ console.log(em === emp);
 //two objects are same iff they refer the same underlying object
 
 let q = [];
-w = q;
+let w = q;
 q[0] = 1;
 w[0];
 console.log(q === w);
@@ -709,3 +711,165 @@ console.log(parseInt('ff', 16));
 console.log(parseInt('zz', 36));
 console.log(parseInt('077', 8));
 console.log(parseInt('077', 16));
+
+//OBJECT TO PRIMITVE CONVERSION
+
+//Variable declaration and assignment
+let i;
+console.log(i); //not assigning value declaration gives undefined value to variable
+let sum;
+let j, minus;
+let message = 'hello';
+let ij = 0,
+  jk = 0,
+  kl = 0;
+
+let xx = 2,
+  yy = xx * xx;
+
+//const keyword using
+const H0 = 74; //hubble constant
+const C = 299792.458; //speed of light in vaccum
+const AU = 1.496e8; //Astronomical unit:distance to the sun
+let dataOne = [1, 2, 3, 4];
+
+let object = {
+  a: 10,
+  b: 20,
+};
+for (let i = 0, len = dataOne.length; i < len; i++) console.log(dataOne[i]);
+for (let datum of dataOne) console.log(datum);
+for (let property in object) console.log(property);
+
+//using const in loops should be avoidable
+//only use const when there is no iteration
+
+for (const propety in object) console.log(propety);
+
+for (const datum in data) console.log(datum);
+
+//variable and constant scope
+
+//repeated declaration
+const t = 1;
+if (t === 1) {
+  let t = 2;
+  console.log(t); //2
+}
+console.log(t); //1
+// let t = 3; error
+
+//perfectly fine but poor programming
+let val = 10;
+val = 'ten';
+
+//var and js
+var element;
+var data = [],
+  count = data.length;
+for (var qz = 0; qz < count; count++) console.log(data[qz]);
+
+//
+var aValue = 10;
+console.log(aValue);
+console.log(globalThis.aValue); //10
+
+//let and const declared variable are not properties of the global object
+
+{
+  var blockValue = 10;
+}
+console.log(blockValue); //10
+
+//var used frequently in    for loop
+
+for (var initial = 0; initial < 10; initial++) {
+  console.log(initial);
+}
+
+console.log(hoist);
+var hoist = 10;
+
+//Destructuring Assignment
+
+let [one1, two2] = [1, 2];
+console.log(one1);
+console.log(two2);
+[one1, two2] = [one1 + 1, two2 + 1];
+console.log(one1); //2
+console.log(two2); //3
+
+//swap using destructuring
+[one1, two2] = [two2, one1];
+console.log(one1); //3
+console.log(two2); //2
+
+//function of converting [x,y] cordinates to polar cordinates [r,thetha]
+
+function toPolar(x, y) {
+  return [Math.sqrt(x * x + y * y), Math.atan2(y, x)];
+}
+
+//Converting polar to cartesian coordinates
+function toCartesian(r, theta) {
+  return [r * Math.cos(theta), r * Math.sin(theta)];
+}
+
+let [r, theta] = toPolar(1.0, 1.0);
+console.log(r, theta);
+let [xCord, yCord] = toCartesian(r, theta);
+console.log(xCord);
+console.log(yCord);
+
+//Object.entries
+const objects = { a: 1, b: 2, c: 3 };
+
+const entries = Object.entries(object);
+
+//Object.entries convert into array
+console.log(entries);
+// Output: [ ['a', 1], ['b', 2], ['c', 3] ]
+
+//another use
+let array = { x: 1, y: 2 };
+
+for (const [name, value] of Object.entries(array)) {
+  console.log(name, value);
+}
+
+//left side variable doesnot assigned
+let [ab, bc] = [1];
+console.log(ab);
+console.log(bc); //shows undefined
+
+//right side value doesnot assigned with a variable
+[ab, bc] = [1, 2, 3]; //3 will be ignored
+
+//skip in destructuring
+let [, doo, , chaar] = [1, 2, 3, 4];
+console.log(doo);
+console.log(chaar);
+
+//rest pattern
+let [oneValue, ...restValue] = [1, 2, 3, 4];
+console.log(oneValue);
+console.log(restValue);
+
+//nested arrays
+let [aa, [bb, cc]] = [1, [2, 3], 5];
+console.log(aa);
+console.log(bb);
+console.log(cc);
+
+//u can use any iterable object type for destructuring lets see how
+let [first, ...second] = 'Hello';
+console.log(first);
+console.log(second); //create an array by rest operator and insert all ello into an array
+
+//destructuring with object
+let transparent = { rg: 0.0, gh: 0.0, hk: 0.0, text: 1.0 };
+let { rg, gh, hk } = transparent;
+console.log(rg);
+console.log(gh);
+console.log(hk);
+
