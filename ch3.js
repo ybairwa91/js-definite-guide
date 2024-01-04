@@ -873,3 +873,42 @@ console.log(rg);
 console.log(gh);
 console.log(hk);
 
+//now sin=Math.sin,cos=Math.cos,tan=Math.tan
+const { sin, cos, tan } = Math;
+
+// since pop is not in Math object it will be undefined
+const { pop, cot, atan } = Math;
+
+//generally we use the same variable match with the object keyname to destructure but if u want to change the keyname
+//here is the syntax
+
+let anArray = { text: '10', number: 10 };
+
+const { text: strings, number: value } = anArray;
+console.log(strings); //'10'
+console.log(value); //10
+
+//Nested object and destructuring array
+let points = [
+  { x: 1, y: 2 },
+  { x: 3, y: 4 },
+];
+
+let [{ x: x1, y: y1 }, { x: x2, y: y2 }] = points;
+console.log(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4); //gives true
+
+//destructuring object of array
+let point = { p1: [1, 2], p2: [3, 4] }; //an object with 2 array properties
+let {
+  p1: [xx1, yy1],
+  p2: [xx2, yy2],
+} = point;
+
+console.log(xx1 === 1 && yy1 === 2 && xx2 === 3 && yy2 === 4);
+
+//better alternative is
+let xxx1 = point.p1[0];
+let yyy1 = point.p1[1];
+
+
+//End of the chapter
